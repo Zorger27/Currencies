@@ -51,7 +51,7 @@ export default class NBURates extends Vue {}
 
 <template>
   <h1 class="bank">
-    <a href="https://portal.bank.gov.ua/uk/8" title="In more detail..." target="_blank">
+    <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
       {{ $t('nbu') }}
     </a> <i @click="changeView"><span :class="['fa', tableView ? 'fa-list' : 'fa-th']"></span></i>
   </h1>
