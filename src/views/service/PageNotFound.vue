@@ -6,11 +6,11 @@ import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
   mixins: [openGraphMixin],
   mounted() {
     const mainTitle = 'Page NOT Found';
-    const title = 'TS Template - Page NOT Found';
-    const metaDescription = 'Vue.js template with TypeScript';
-    const description = 'TS Template - Page NOT Found';
-    const imageUrl = 'https://vue-template-ts.vercel.app/assets/ogimage/bmp/image_404.jpg';
-    const url = 'https://vue-template-ts.vercel.app';
+    const title = 'Exchange rates - Page NOT Found';
+    const metaDescription = 'Exchange rates by National Bank of Ukraine';
+    const description = 'Exchange rates - Page NOT Found';
+    const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/image_404.jpg';
+    const url = 'https://currencies-zeta.vercel.app';
 
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);

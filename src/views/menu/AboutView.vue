@@ -13,12 +13,12 @@ import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
     }
   },
   mounted() {
-    const mainTitle = 'About these TS Projects';
-    const title = 'About these TS Projects';
-    const metaDescription = 'Vue.js template with TypeScript';
-    const description = 'About these TS Projects';
-    const imageUrl = 'https://vue-template-ts.vercel.app/assets/ogimage/bmp/about.jpg';
-    const url = 'https://vue-template-ts.vercel.app/about';
+    const mainTitle = 'About Courses';
+    const title = 'About Courses';
+    const metaDescription = 'Exchange rates by National Bank of Ukraine';
+    const description = 'Exchange rates by National Bank of Ukraine';
+    const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/about.jpg';
+    const url = 'https://currencies-zeta.vercel.app/about';
 
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);

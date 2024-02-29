@@ -5,12 +5,12 @@ import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
 @Options({
   mixins: [openGraphMixin],
   mounted() {
-    const mainTitle = 'TS - Project № 2';
-    const title = 'TS template - Project № 2';
-    const metaDescription = 'Vue.js template with TypeScript';
-    const description = 'Vue.js template with TypeScript - Project № 2';
-    const imageUrl = 'https://vue-template-ts.vercel.app/assets/ogimage/bmp/project2.jpg';
-    const url = 'https://vue-template-ts.vercel.app/project2';
+    const mainTitle = 'Courses v.2.0';
+    const title = 'Courses v.2.0';
+    const metaDescription = 'Exchange rates by National Bank of Ukraine';
+    const description = 'Exchange rates by National Bank of Ukraine';
+    const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/project2.jpg';
+    const url = 'https://currencies-zeta.vercel.app/project2';
 
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);
