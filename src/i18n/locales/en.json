@@ -1,0 +1,42 @@
+{
+  "locale": {
+    "en": "English",
+    "uk": "Ukrainian",
+    "es": "Spanish"
+  },
+  "header": {
+    "prg01": "Courses Newest",
+    "prg02": "Courses v.2.0",
+    "prg03": "Courses Old",
+    "about": "About"
+  },
+  "footer": {
+    "text1": "Designed By ",
+    "text2": "Zorger",
+    "text3": ".",
+    "text4": "All rights reserved"
+  },
+  "project1": {
+    "name": "Courses Newest",
+    "disc": "Description"
+  },
+  "project2": {
+    "name": "Courses v.2.0",
+    "disc": "Description"
+  },
+  "project3": {
+    "name": "Courses Old",
+    "disc": "Description"
+  },
+  "about": {
+    "title": "Exchange rates by NBU",
+    "more01": "More information...",
+    "more02": "This web application takes real foreign exchange rates from the National Bank of Ukraine.",
+    "more03": "Sorts and displays them to the user in different views: list, table or creeping line.",
+    "more04": "There are a LOT of interesting things here! \uD83D\uDE09\uD83E\uDD13",
+    "more05": "Welcome! \uD83E\uDD29\uD83D\uDE0E",
+    "technologies": "Technologies",
+    "name": "Name",
+    "version": "Version"
+  }
+}
