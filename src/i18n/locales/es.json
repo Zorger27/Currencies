@@ -16,6 +16,16 @@
     "text3": ".",
     "text4": "Todos los derechos reservados"
   },
+  "title": "Los tipos de cambio",
+  "bank": "API de PrivatBank",
+  "nbu": "Banco Nacional de Ucrania",
+  "code": "Código",
+  "currency": "Moneda",
+  "rate": "Curso",
+  "purchase": "Compra",
+  "sale": "Venta",
+  "uah": "uah",
+  "usd": "usd",
   "project1": {
     "name": "Cursos más nuevo",
     "disc": "Descripción"

@@ -16,6 +16,16 @@
     "text3": ".",
     "text4": "All rights reserved"
   },
+  "title": "Exchange rates",
+  "bank": "PrivatBank API",
+  "nbu": "National Bank of Ukraine",
+  "code": "Code",
+  "currency": "Currency",
+  "rate": "Rate",
+  "purchase": "Purchase",
+  "sale": "Sale",
+  "uah": "uah",
+  "usd": "usd",
   "project1": {
     "name": "Courses Newest",
     "disc": "Description"

@@ -1,6 +1,8 @@
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
 import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
+import CurrentDate from "@/components/util/CurrentDate.vue";
+import NBURates from "@/components/other/NBURates.vue";
 
 @Options({
   mixins: [openGraphMixin],
@@ -16,7 +18,7 @@ import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
     this.setPageTitle(mainTitle);
   },
   methods: {},
-  components: {},
+  components: {NBURates, CurrentDate},
 })
 export default class Project3 extends Vue {
 };
@@ -26,6 +28,8 @@ export default class Project3 extends Vue {
   <div class="container">
     <h1>{{ $t('project3.name') }}</h1>
     <line></line>
+    <div><CurrentDate></CurrentDate></div>
+    <div><NBURates></NBURates></div>
   </div>
 </template>
 
@@ -33,13 +37,8 @@ export default class Project3 extends Vue {
 .container {
   flex: 1 0 auto;
   background: linear-gradient(to bottom, rgb(229, 255, 229), rgb(250, 247, 234)) no-repeat center;
-
-  //background-image: url("@/assets/background/background02.jpg");
-  //background-position: center;
-  //background-size: cover;
-  //background-repeat: no-repeat;
-
   h1 {font-size: 2.5rem;margin: 0.7rem auto;color: black;}
+
 }
 @media(max-width: 1020px) {
   .container {
