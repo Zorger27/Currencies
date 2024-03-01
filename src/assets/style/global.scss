@@ -50,8 +50,8 @@ table {border-collapse: collapse;}
   line {width: 100%;}
   .table {
     font-size: 1.60rem;
-    //padding: 0.8rem;
-    //margin: 0.5rem auto;
+    padding: 0.8rem;
+    margin: 0.7rem auto;
     tr, td, th {padding: 0.4rem;}
   }
 }
@@ -60,7 +60,7 @@ table {border-collapse: collapse;}
   .table {
     font-size: 1.50rem;
     padding: 0;
-    margin: 0.5rem auto;
+    margin: 0.7rem auto;
     border: none;
     border-radius: unset;
     tr, td, th {padding: 0.3rem;}
