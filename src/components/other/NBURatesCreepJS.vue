@@ -33,15 +33,12 @@ interface ExchangeRate {
   methods: {
     async fetchExchangeRates() {
       try {
-        const response = await axios.get<ExchangeRate[]>(
-          "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json"
-        );
-
+        const response = await axios.get<ExchangeRate[]>("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
         // Оставляем только выбранные валюты и удваиваем данные для создания непрерывного эффекта
-        this.rates = response.data
-          .filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc))
-          .concat(response.data.filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc)));
-
+        // this.rates = response.data
+        //   .filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc))
+        //   .concat(response.data.filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc)));
+        this.rates = response.data.concat(response.data);
         await this.$nextTick(this.calculateWidths);
         this.setupAnimationListener();
       } catch (error) {

@@ -12,7 +12,7 @@ interface ExchangeRate {
   data() {
     return {
       rates: [] as ExchangeRate[],
-      tableView: true
+      tableView: false
     }
   },
   created() {
@@ -21,23 +21,11 @@ interface ExchangeRate {
   methods: {
     async fetchExchangeRates() {
       try {
-        const response = await axios.get<ExchangeRate[]>(
-          'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
-        )
-        this.rates = response.data.filter(
-          (rate) =>
-            rate.cc === 'USD' ||
-            rate.cc === 'EUR' ||
-            rate.cc === 'GBP' ||
-            rate.cc === 'AED' ||
-            rate.cc === 'TRY' ||
-            rate.cc === 'XAU' ||
-            rate.cc === 'XAG' ||
-            rate.cc === 'XPT' ||
-            rate.cc === 'XPD'
-        )
+        const response = await axios.get<ExchangeRate[]>("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
+        // Оставляем только выбранные валюты
+        this.rates = response.data.filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc));
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
     changeView() {

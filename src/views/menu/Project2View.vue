@@ -49,9 +49,7 @@ export default class Project2 extends Vue {
     a {text-decoration: none; color: rebeccapurple;}
     a:hover {color: cornflowerblue;}
   }
-  .creep {
-    background: none;
-  }
+  .creep {background: none;}
 }
 @media(max-width: 1020px) {
   .container {
