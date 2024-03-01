@@ -28,7 +28,7 @@ export default class Project2 extends Vue {
   <div class="container">
     <h1>{{ $t('project2.name') }}</h1>
     <line></line>
-    <CurrentDate></CurrentDate>
+    <CurrentDate style="margin-top: 0.5rem"></CurrentDate>
     <h1 class="bank">
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
@@ -46,7 +46,6 @@ export default class Project2 extends Vue {
 
   .bank {
     font-size: 2.5rem;
-    margin: 0;
     a {text-decoration: none; color: rebeccapurple;}
     a:hover {color: cornflowerblue;}
   }

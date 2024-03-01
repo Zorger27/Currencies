@@ -18,7 +18,17 @@ interface ExchangeRate {
     }
   },
   mounted() {
-    this.fetchExchangeRates();
+    this.fetchExchangeRates().then(() => {
+      this.$nextTick(() => {
+        const content = this.$refs.marquee.querySelector('.content');
+        if (content) {
+          // Дублирование содержимого для создания непрерывного эффекта
+          content.innerHTML += content.innerHTML;
+          // Пересчитываем ширину после дублирования
+          this.calculateWidths();
+        }
+      });
+    });
   },
   methods: {
     async fetchExchangeRates() {
@@ -26,9 +36,12 @@ interface ExchangeRate {
         const response = await axios.get<ExchangeRate[]>(
           "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json"
         );
-        this.rates = response.data.filter(
-          rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc)
-        );
+
+        // Оставляем только выбранные валюты и удваиваем данные для создания непрерывного эффекта
+        this.rates = response.data
+          .filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc))
+          .concat(response.data.filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc)));
+
         await this.$nextTick(this.calculateWidths);
         this.setupAnimationListener();
       } catch (error) {
@@ -50,13 +63,19 @@ interface ExchangeRate {
       this.animateMarquee();
     },
     animateMarquee() {
+      const speed = 1; // Скорость анимации
       setInterval(() => {
-        if (this.animationOffset >= this.contentWidth) {
+        // Удвоение ширины контента, так как теперь у нас дублированный контент
+        const fullContentWidth = this.contentWidth * 2;
+
+        // Сброс анимации, когда достигнут конец дублированного контента
+        if (this.animationOffset >= fullContentWidth) {
           this.animationOffset = 0;
         } else {
-          this.animationOffset += 1;
+          this.animationOffset += speed;
         }
-        const content = this.$refs.marquee?.querySelector(".content") as HTMLElement | null;
+
+        const content = this.$refs.marquee?.querySelector(".content");
         if (content) {
           content.style.transform = `translateX(${-this.animationOffset}px)`;
         }
