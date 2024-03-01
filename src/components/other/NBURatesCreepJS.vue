@@ -12,42 +12,55 @@ interface ExchangeRate {
   data() {
     return {
       rates: [] as ExchangeRate[],
+      contentWidth: 0,
+      marqueeWidth: 0,
+      animationOffset: 0,
     }
   },
   mounted() {
-    this.setupAnimationListener();
     this.fetchExchangeRates();
   },
   methods: {
     async fetchExchangeRates() {
       try {
         const response = await axios.get<ExchangeRate[]>(
-          'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
-        )
+          "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json"
+        );
         this.rates = response.data.filter(
-          (rate) =>
-            rate.cc === 'USD' ||
-            rate.cc === 'EUR' ||
-            rate.cc === 'GBP' ||
-            rate.cc === 'AED' ||
-            rate.cc === 'TRY' ||
-            rate.cc === 'XAU' ||
-            rate.cc === 'XAG' ||
-            rate.cc === 'XPT' ||
-            rate.cc === 'XPD'
-        )
+          rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc)
+        );
+        await this.$nextTick(this.calculateWidths);
+        this.setupAnimationListener();
       } catch (error) {
-        console.error(error)
+        console.error(error);
+      }
+    },
+    calculateWidths() {
+      const marquee = this.$refs.marquee as HTMLElement | null;
+      const content = marquee?.querySelector(".content") as HTMLElement | null;
+      if (marquee && content) {
+        this.marqueeWidth = marquee.offsetWidth;
+        this.contentWidth = content.offsetWidth;
+        this.animationOffset = this.marqueeWidth / 2;
       }
     },
     setupAnimationListener() {
-      const marquee = this.$refs.marquee as HTMLElement; // Приведение типа для TypeScript
-      if (marquee) {
-        marquee.addEventListener("animationiteration", this.handleAnimationIteration);
-      }
+      window.addEventListener("resize", this.calculateWidths);
+      this.$nextTick(this.calculateWidths);
+      this.animateMarquee();
     },
-    handleAnimationIteration() {
-      this.fetchExchangeRates();
+    animateMarquee() {
+      setInterval(() => {
+        if (this.animationOffset >= this.contentWidth) {
+          this.animationOffset = 0;
+        } else {
+          this.animationOffset += 1;
+        }
+        const content = this.$refs.marquee?.querySelector(".content") as HTMLElement | null;
+        if (content) {
+          content.style.transform = `translateX(${-this.animationOffset}px)`;
+        }
+      }, 10);
     },
   },
   components: {},
@@ -58,8 +71,10 @@ export default class NBURatesCreepJS extends Vue {}
 <template>
   <div class="container">
     <div ref="marquee" class="marquee">
-      <div v-for="(rate, index) in rates" :key="index" class="rates">
-        <span class="name">{{ rate.txt }}</span>=<span class="price">{{ rate.rate.toFixed(2) }}</span>{{ $t('uah') }}
+      <div class="content">
+        <div v-for="(rate, index) in rates" :key="`rate-${index}`" class="rates">
+          <span class="name">{{ rate.txt }}</span>=<span class="price">{{ rate.rate.toFixed(2) }}</span>{{ $t('uah') }}
+        </div>
       </div>
     </div>
   </div>
@@ -71,44 +86,40 @@ export default class NBURatesCreepJS extends Vue {}
   overflow: hidden;
   position: relative;
   .marquee {
-    white-space: nowrap; // Запрет переноса на новую строку
-    //animation: marquee 20s linear infinite;
-    animation: marquee 40s linear infinite;
-    .rates {
-      display: inline-flex;
-      font-size: 2rem;
-      padding: 1rem;
-      margin: 0.5rem 1rem;
-      border: 1px solid lightgrey;
-      border-radius: 5px;
-      background-color: #f1f1f1;
-      //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-      .name {
-        margin-right: 5px;
-        color: deepskyblue;
-      }
-      .price {
-        margin-right: 5px;
-        margin-left: 5px;
-        color: deeppink;
+    overflow: hidden;
+    position: relative;
+    .content {
+      white-space: nowrap;
+      display: inline-block;
+      .rates {
+        display: inline-flex;
+        font-size: 2rem;
+        padding: 1rem;
+        margin: 0.5rem 1rem;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        background-color: #f1f1f1;
+        .name {
+          margin-right: 5px;
+          color: deepskyblue;
+        }
+        .price {
+          margin-right: 5px;
+          margin-left: 5px;
+          color: deeppink;
+        }
       }
     }
   }
-  @keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-  }
-  //@keyframes marquee {
-  //  from {transform: translateX(0%);}
-  //  to {transform: translateX(-50%);}
-  //}
 }
 
 @media(max-width: 1020px) {
   .marquee {
-    .rates {
-      font-size: 1.6rem;
-      padding: 0.8rem;
+    .content {
+      .rates {
+        font-size: 1.6rem;
+        padding: 0.8rem;
+      }
     }
   }
 }
@@ -116,10 +127,11 @@ export default class NBURatesCreepJS extends Vue {}
   .container {
     margin-bottom: 0.5rem;
     .marquee {
-      animation: marquee 5s linear infinite;
-      .rates {
-      font-size: 1.5rem;
-      padding: 0.6rem;
+      .content {
+        .rates {
+          font-size: 1.5rem;
+          padding: 0.6rem;
+        }
       }
     }
   }
