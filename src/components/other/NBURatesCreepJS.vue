@@ -52,7 +52,7 @@ interface ExchangeRate {
   },
   components: {},
 })
-export default class NBURatesCreep extends Vue {}
+export default class NBURatesCreepJS extends Vue {}
 </script>
 
 <template>

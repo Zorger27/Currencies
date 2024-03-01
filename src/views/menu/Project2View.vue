@@ -1,9 +1,8 @@
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
 import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
-import NBURates from "@/components/other/NBURates.vue";
 import CurrentDate from "@/components/util/CurrentDate.vue";
-import NBURatesCreep from "@/components/other/NBURatesCreep.vue";
+import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
 
 @Options({
   mixins: [openGraphMixin],
@@ -19,7 +18,7 @@ import NBURatesCreep from "@/components/other/NBURatesCreep.vue";
     this.setPageTitle(mainTitle);
   },
   methods: {},
-  components: {NBURatesCreep, CurrentDate, NBURates},
+  components: {NBURatesCreepJS, CurrentDate},
 })
 export default class Project2 extends Vue {
 };
@@ -35,7 +34,7 @@ export default class Project2 extends Vue {
         {{ $t('nbu') }}
       </a>
     </h1>
-    <NBURatesCreep class="creep"></NBURatesCreep>
+    <NBURatesCreepJS class="creep"></NBURatesCreepJS>
   </div>
 </template>
 
