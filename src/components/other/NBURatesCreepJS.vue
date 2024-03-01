@@ -92,7 +92,7 @@ export default class NBURatesCreepJS extends Vue {}
     <div ref="marquee" class="marquee">
       <div class="content">
         <div v-for="(rate, index) in rates" :key="`rate-${index}`" class="rates">
-          <span class="name">{{ rate.txt }}</span>=<span class="price">{{ rate.rate.toFixed(2) }}</span>{{ $t('uah') }}
+          <span class="name">{{ rate.txt }}</span><span class="eql">=</span><span class="price">{{ rate.rate.toFixed(2) }}</span><span class="uah">{{ $t('uah') }}</span>
         </div>
       </div>
     </div>
@@ -113,19 +113,32 @@ export default class NBURatesCreepJS extends Vue {}
       .rates {
         display: inline-flex;
         font-size: 2rem;
-        padding: 1rem;
+        font-style: italic;
+        padding: 0.5rem;
         margin: 0.5rem 1rem;
-        border: 1px solid lightgrey;
-        border-radius: 5px;
-        background-color: #f1f1f1;
+        //border: 1px solid lightgrey;
+        //border-radius: 5px;
+        //background-color: #f1f1f1;
         .name {
           margin-right: 5px;
-          color: deepskyblue;
+          color: black;
+          //text-shadow: 4px 4px 8px dodgerblue;
+        }
+        .eql {
+          color: goldenrod;
+          font-weight: bold;
+          //text-shadow: 2px 2px 4px goldenrod;
         }
         .price {
           margin-right: 5px;
           margin-left: 5px;
-          color: deeppink;
+          color: black;
+          font-weight: bold;
+          text-shadow: 1px 1px 2px dodgerblue;
+        }
+        .uah {
+          color: black;
+          //text-shadow: 2px 2px 4px green;
         }
       }
     }
@@ -137,7 +150,7 @@ export default class NBURatesCreepJS extends Vue {}
     .content {
       .rates {
         font-size: 1.6rem;
-        padding: 0.8rem;
+        padding: 0.4rem;
       }
     }
   }
@@ -149,7 +162,7 @@ export default class NBURatesCreepJS extends Vue {}
       .content {
         .rates {
           font-size: 1.5rem;
-          padding: 0.6rem;
+          padding: 0.3rem;
         }
       }
     }
