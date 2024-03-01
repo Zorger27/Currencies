@@ -39,7 +39,7 @@
     "disc": "Description"
   },
   "about": {
-    "title": "Exchange rates by NBU",
+    "title": "Exchange rates from NBU",
     "more01": "More information...",
     "more02": "This web application takes real foreign exchange rates from the National Bank of Ukraine.",
     "more03": "Sorts and displays them to the user in different views: list, table or creeping line.",

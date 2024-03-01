@@ -7,7 +7,7 @@ import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
   mounted() {
     const mainTitle = 'Page NOT Found';
     const title = 'Exchange rates - Page NOT Found';
-    const metaDescription = 'Exchange rates by National Bank of Ukraine';
+    const metaDescription = 'Exchange rates from National Bank of Ukraine';
     const description = 'Exchange rates - Page NOT Found';
     const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/image_404.jpg';
     const url = 'https://currencies-zeta.vercel.app';

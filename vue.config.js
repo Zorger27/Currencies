@@ -43,11 +43,11 @@ module.exports = {
         publicPath: false,
         useHash: false,
         metas: [
-          {attributes: {name: 'description', content: 'Exchange rates by National Bank of Ukraine'}},
+          {attributes: {name: 'description', content: 'Exchange rates from National Bank of Ukraine'}},
           {attributes: {property: 'og:title', content: 'Currencies'}},
           {attributes: {property: 'twitter:title', content: 'Currencies'}},
-          {attributes: {property: 'og:description', content: 'Exchange rates by NBU'}},
-          {attributes: {property: 'twitter:description', content: 'Exchange rates by NBU'}},
+          {attributes: {property: 'og:description', content: 'Exchange rates from NBU'}},
+          {attributes: {property: 'twitter:description', content: 'Exchange rates from NBU'}},
           {attributes: {property: 'og:image', content: 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/image_all.jpg'}},
           {attributes: {property: 'twitter:image', content: 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/image_all.jpg'}},
           {attributes: {property: 'og:url', content: 'https://currencies-zeta.vercel.app'}},
@@ -64,7 +64,7 @@ module.exports = {
         manifest: './src/assets/manifest/manifest.webmanifest',
         favicons: {
           appName: 'Currencies',
-          appDescription: 'Exchange rates by NBU',
+          appDescription: 'Exchange rates from NBU',
           developerName: 'Zorger',
           developerURL: null
         }

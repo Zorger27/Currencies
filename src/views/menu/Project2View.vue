@@ -7,8 +7,8 @@ import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
   mounted() {
     const mainTitle = 'Courses v.2.0';
     const title = 'Courses v.2.0';
-    const metaDescription = 'Exchange rates by National Bank of Ukraine';
-    const description = 'Exchange rates by National Bank of Ukraine';
+    const metaDescription = 'Exchange rates from National Bank of Ukraine';
+    const description = 'Exchange rates from National Bank of Ukraine';
     const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/project2.jpg';
     const url = 'https://currencies-zeta.vercel.app/project2';
 
