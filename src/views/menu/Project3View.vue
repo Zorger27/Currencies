@@ -6,6 +6,11 @@ import NBURates from "@/components/other/NBURates.vue";
 
 @Options({
   mixins: [openGraphMixin],
+  data() {
+    return {
+      tableView: false
+    }
+  },
   mounted() {
     const mainTitle = 'Courses Old';
     const title = 'Courses Old';
@@ -17,7 +22,11 @@ import NBURates from "@/components/other/NBURates.vue";
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);
   },
-  methods: {},
+  methods: {
+    changeView() {
+      this.tableView = !this.tableView;
+    }
+  },
   components: {NBURates, CurrentDate},
 })
 export default class Project3 extends Vue {
@@ -28,8 +37,13 @@ export default class Project3 extends Vue {
   <div class="container">
     <h1>{{ $t('project3.name') }}</h1>
     <line></line>
-    <div><CurrentDate></CurrentDate></div>
-    <div><NBURates></NBURates></div>
+    <CurrentDate></CurrentDate>
+    <h1 class="bank">
+      <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
+        {{ $t('nbu') }}
+      </a> <i @click="changeView"><span :class="['fa', tableView ? 'fa-list' : 'fa-th']"></span></i>
+    </h1>
+    <NBURates :table-view="tableView"></NBURates>
   </div>
 </template>
 
@@ -38,17 +52,23 @@ export default class Project3 extends Vue {
   flex: 1 0 auto;
   background: linear-gradient(to bottom, rgb(229, 255, 229), rgb(250, 247, 234)) no-repeat center;
   h1 {font-size: 2.5rem;margin: 0.7rem auto;color: black;}
-
+  .bank {
+    font-size: 2.5rem;
+    a {text-decoration: none; color: rebeccapurple;}
+    a:hover {color: cornflowerblue;}
+  }
 }
 @media(max-width: 1020px) {
   .container {
     h1 {font-size: 2.3rem;margin: 0.6rem auto;}
+    .bank {font-size: 2rem;}
   }
 }
 
 @media (max-width: 768px) {
   .container {
     h1 {font-size: 2rem;margin: 0.5rem auto;}
+    .bank {font-size: 1.6rem;}
   }
 }
 </style>

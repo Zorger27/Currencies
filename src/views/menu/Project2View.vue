@@ -6,6 +6,11 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
 
 @Options({
   mixins: [openGraphMixin],
+  data() {
+    return {
+      cripView: true
+    }
+  },
   mounted() {
     const mainTitle = 'Courses v.2.0';
     const title = 'Courses v.2.0';
@@ -17,7 +22,11 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);
   },
-  methods: {},
+  methods: {
+    changeCrip() {
+      this.cripView = !this.cripView;
+    }
+  },
   components: {NBURatesCreepJS, CurrentDate},
 })
 export default class Project2 extends Vue {
@@ -28,13 +37,13 @@ export default class Project2 extends Vue {
   <div class="container">
     <h1>{{ $t('project2.name') }}</h1>
     <line></line>
-    <CurrentDate style="margin-top: 0.5rem"></CurrentDate>
+    <CurrentDate></CurrentDate>
     <h1 class="bank">
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a>
+      </a> <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-car-alt']"></span></i>
     </h1>
-    <NBURatesCreepJS class="creep"></NBURatesCreepJS>
+    <NBURatesCreepJS class="creep" :crip-view="cripView"></NBURatesCreepJS>
   </div>
 </template>
 

@@ -12,7 +12,6 @@ interface ExchangeRate {
   data() {
     return {
       rates: [] as ExchangeRate[],
-      tableView: false
     }
   },
   created() {
@@ -28,8 +27,11 @@ interface ExchangeRate {
         console.error(error);
       }
     },
-    changeView() {
-      this.tableView = !this.tableView;
+  },
+  props: {
+    tableView: {
+      type: Boolean,
+      required: true
     }
   },
   components: {},
@@ -38,11 +40,6 @@ export default class NBURates extends Vue {}
 </script>
 
 <template>
-  <h1 class="bank">
-    <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
-      {{ $t('nbu') }}
-    </a> <i @click="changeView"><span :class="['fa', tableView ? 'fa-list' : 'fa-th']"></span></i>
-  </h1>
   <div v-if="tableView" class="table">
     <table>
       <thead>

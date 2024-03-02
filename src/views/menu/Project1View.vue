@@ -7,6 +7,12 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
 
 @Options({
   mixins: [openGraphMixin],
+  data() {
+    return {
+      tableView: false,
+      cripView: true
+    }
+  },
   mounted() {
     const mainTitle = 'Courses Newest';
     const title = 'Courses Newest';
@@ -18,7 +24,14 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);
   },
-  methods: {},
+  methods: {
+    changeView() {
+      this.tableView = !this.tableView;
+    },
+    changeCrip() {
+      this.cripView = !this.cripView;
+    }
+  },
   components: {NBURatesCreepJS, NBURates, CurrentDate},
 })
 export default class Project1 extends Vue {
@@ -29,9 +42,15 @@ export default class Project1 extends Vue {
   <div class="container">
     <h1>{{ $t('project1.name') }}</h1>
     <line></line>
-    <div><CurrentDate></CurrentDate></div>
-    <NBURatesCreepJS class="creep"></NBURatesCreepJS>
-    <div><NBURates></NBURates></div>
+    <CurrentDate></CurrentDate>
+    <h1 class="bank">
+      <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
+        {{ $t('nbu') }}
+      </a> <i @click="changeView"><span :class="['fa', tableView ? 'fa-list' : 'fa-th']"></span></i>
+      <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-car-alt']"></span></i>
+    </h1>
+    <NBURatesCreepJS class="creep" :crip-view="cripView"></NBURatesCreepJS>
+    <NBURates :table-view="tableView"></NBURates>
   </div>
 </template>
 
@@ -39,18 +58,54 @@ export default class Project1 extends Vue {
 .container {
   flex: 1 0 auto;
   background: linear-gradient(to bottom, rgb(255, 249, 229), rgb(255, 240, 244)) no-repeat center;
-  h1 {font-size: 2.5rem;margin: 0.7rem auto;color: black;}
-  .creep {background: none;}
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 0.7rem auto;
+    color: black;
+  }
+
+  .bank {
+    font-size: 2.5rem;
+
+    a {
+      text-decoration: none;
+      color: rebeccapurple;
+    }
+
+    a:hover {
+      color: cornflowerblue;
+    }
+  }
+
+  .creep {
+    background: none;
+  }
 }
+
 @media(max-width: 1020px) {
   .container {
-    h1 {font-size: 2.3rem;margin: 0.6rem auto;}
+    h1 {
+      font-size: 2.3rem;
+      margin: 0.6rem auto;
+    }
+
+    .bank {
+      font-size: 2rem;
+    }
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    h1 {font-size: 2rem;margin: 0.5rem auto;}
+    h1 {
+      font-size: 2rem;
+      margin: 0.5rem auto;
+    }
+
+    .bank {
+      font-size: 1.6rem;
+    }
   }
 }
 </style>

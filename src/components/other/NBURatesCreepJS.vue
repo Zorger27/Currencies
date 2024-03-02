@@ -79,13 +79,19 @@ interface ExchangeRate {
       }, 10);
     },
   },
+  props: {
+    cripView: {
+      type: Boolean,
+      required: true
+    }
+  },
   components: {},
 })
 export default class NBURatesCreepJS extends Vue {}
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" v-show="cripView">
     <div ref="marquee" class="marquee">
       <div class="content">
         <div v-for="(rate, index) in rates" :key="`rate-${index}`" class="rates">
