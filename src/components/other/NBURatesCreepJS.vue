@@ -31,10 +31,12 @@ interface ExchangeRate {
       });
     });
   },
+  beforeUnmount() {
+    clearInterval(this.animationInterval);
+  },
   watch: {
-    speed(newSpeed: number) {
-      // Обновляем скорость и перезапускаем анимацию
-      this.updateAnimationSpeed(newSpeed);
+    speed() {
+      this.animateMarquee(); // Перезапустите анимацию при изменении скорости
     }
   },
   methods: {
@@ -81,13 +83,6 @@ interface ExchangeRate {
           content.style.transform = `translateX(${-this.animationOffset}px)`;
         }
       }, 10);
-    },
-    updateAnimationSpeed(newSpeed: number) {
-      this.speed = newSpeed; // Обновите скорость в состоянии компонента
-      if (this.animationInterval) {
-        clearInterval(this.animationInterval); // Очистите текущий интервал
-      }
-      this.animateMarquee(); // Запустите анимацию с новой скоростью
     },
   },
   props: {
