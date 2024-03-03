@@ -15,6 +15,7 @@ interface ExchangeRate {
       contentWidth: 0,
       marqueeWidth: 0,
       animationOffset: 0,
+      animationInterval: null as any, // 'null as any' для инициализации с поддержкой TypeScript
     }
   },
   mounted() {
@@ -29,6 +30,12 @@ interface ExchangeRate {
         }
       });
     });
+  },
+  watch: {
+    speed(newSpeed: number) {
+      // Обновляем скорость и перезапускаем анимацию
+      this.updateAnimationSpeed(newSpeed);
+    }
   },
   methods: {
     async fetchExchangeRates() {
@@ -60,16 +67,13 @@ interface ExchangeRate {
       this.animateMarquee();
     },
     animateMarquee() {
-      const speed = 1; // Скорость анимации
-      setInterval(() => {
-        // Удвоение ширины контента, так как теперь у нас дублированный контент
+      this.animationInterval = setInterval(() => {
         const fullContentWidth = this.contentWidth * 2;
 
-        // Сброс анимации, когда достигнут конец дублированного контента
         if (this.animationOffset >= fullContentWidth) {
           this.animationOffset = 0;
         } else {
-          this.animationOffset += speed;
+          this.animationOffset += this.speed; // Используйте this.speed для актуального значения
         }
 
         const content = this.$refs.marquee?.querySelector(".content");
@@ -78,12 +82,23 @@ interface ExchangeRate {
         }
       }, 10);
     },
+    updateAnimationSpeed(newSpeed: number) {
+      this.speed = newSpeed; // Обновите скорость в состоянии компонента
+      if (this.animationInterval) {
+        clearInterval(this.animationInterval); // Очистите текущий интервал
+      }
+      this.animateMarquee(); // Запустите анимацию с новой скоростью
+    },
   },
   props: {
     cripView: {
       type: Boolean,
       required: true
-    }
+    },
+    speed: {
+      type: Number,
+      default: 1,
+    },
   },
   components: {},
 })

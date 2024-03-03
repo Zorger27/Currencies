@@ -8,7 +8,8 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
   mixins: [openGraphMixin],
   data() {
     return {
-      cripView: true
+      cripView: true,
+      speed: 1,
     }
   },
   mounted() {
@@ -25,7 +26,7 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
   methods: {
     changeCrip() {
       this.cripView = !this.cripView;
-    }
+    },
   },
   components: {NBURatesCreepJS, CurrentDate},
 })
@@ -41,7 +42,8 @@ export default class Project2 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a> <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-car-alt']"></span></i>
+      </a> <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-car-alt']"></span></i> <input
+      type="range" v-model.number="speed" min="0.5" max="3" step="0.1" />
     </h1>
     <NBURatesCreepJS class="creep" :crip-view="cripView"></NBURatesCreepJS>
   </div>
