@@ -32,11 +32,18 @@ interface ExchangeRate {
     });
   },
   beforeUnmount() {
-    clearInterval(this.animationInterval);
+    if (this.animationInterval) {
+      clearInterval(this.animationInterval);
+    }
+    window.removeEventListener("resize", this.calculateWidths);
   },
   watch: {
-    speed() {
-      this.animateMarquee(); // Перезапустите анимацию при изменении скорости
+    // speed() {
+    //   this.animateMarquee();
+    // },
+    speed(newSpeed: number) {
+      // Обрабатываем изменение скорости
+      this.updateAnimationSpeed(newSpeed);
     }
   },
   methods: {
@@ -69,13 +76,17 @@ interface ExchangeRate {
       this.animateMarquee();
     },
     animateMarquee() {
+      // Остановка предыдущего интервала перед созданием нового
+      if (this.animationInterval) {
+        clearInterval(this.animationInterval);
+      }
       this.animationInterval = setInterval(() => {
         const fullContentWidth = this.contentWidth * 2;
 
         if (this.animationOffset >= fullContentWidth) {
           this.animationOffset = 0;
         } else {
-          this.animationOffset += this.speed; // Используйте this.speed для актуального значения
+          this.animationOffset += this.speed; // Используем this.speed для актуального значения
         }
 
         const content = this.$refs.marquee?.querySelector(".content");
@@ -83,6 +94,14 @@ interface ExchangeRate {
           content.style.transform = `translateX(${-this.animationOffset}px)`;
         }
       }, 10);
+    },
+    updateAnimationSpeed(newSpeed: number) {
+      // Проверяем, что speed действительно изменился, прежде чем обновлять анимацию
+      if (this.speed !== newSpeed) {
+        this.speed = newSpeed; // Обновляем скорость в состоянии компонента
+        clearInterval(this.animationInterval); // Очищаем текущий интервал
+        this.animateMarquee(); // Запускаем анимацию с новой скоростью
+      }
     },
   },
   props: {
