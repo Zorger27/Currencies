@@ -42,8 +42,8 @@ export default class Project2 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a> <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-car-alt']"></span></i> <input
-      type="range" v-model.number="speed" min="0" max="4" step="0.2" />
+      </a> <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-sack-dollar']"></span></i> <input
+      v-show="cripView" type="range" v-model.number="speed" min="0" max="4" step="0.2" />
     </h1>
     <NBURatesCreepJS class="creep" :crip-view="cripView" :speed="speed"></NBURatesCreepJS>
   </div>

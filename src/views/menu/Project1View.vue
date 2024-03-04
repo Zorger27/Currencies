@@ -10,7 +10,8 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
   data() {
     return {
       tableView: false,
-      cripView: true
+      cripView: true,
+      speed: 1,
     }
   },
   mounted() {
@@ -47,9 +48,10 @@ export default class Project1 extends Vue {
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
       </a> <i @click="changeView"><span :class="['fa', tableView ? 'fa-list' : 'fa-th']"></span></i>
-      <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-car-alt']"></span></i>
+      <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-sack-dollar']"></span></i> <input
+      v-show="cripView" type="range" v-model.number="speed" min="0" max="4" step="0.2" />
     </h1>
-    <NBURatesCreepJS class="creep" :crip-view="cripView"></NBURatesCreepJS>
+    <NBURatesCreepJS class="creep" :crip-view="cripView" :speed="speed"></NBURatesCreepJS>
     <NBURates :table-view="tableView"></NBURates>
   </div>
 </template>
