@@ -2,7 +2,7 @@
 import {Options, Vue} from 'vue-class-component';
 import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
 import CurrentDate from "@/components/util/CurrentDate.vue";
-import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
+import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
 
 @Options({
   mixins: [openGraphMixin],
@@ -13,8 +13,8 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
     }
   },
   mounted() {
-    const mainTitle = 'Courses v.2.0';
-    const title = 'Courses v.2.0';
+    const mainTitle = 'Courses v.3.0';
+    const title = 'Courses v.3.0';
     const metaDescription = 'Exchange rates from National Bank of Ukraine';
     const description = 'Exchange rates from National Bank of Ukraine';
     const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/project2.jpg';
@@ -28,7 +28,7 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
       this.cripView = !this.cripView;
     },
   },
-  components: {NBURatesCreepJS, CurrentDate},
+  components: {NBURatesCreep3d, CurrentDate},
 })
 export default class Project2 extends Vue {
 };
@@ -45,7 +45,7 @@ export default class Project2 extends Vue {
       </a> <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-sack-dollar']"></span></i> <input
       v-show="cripView" type="range" v-model.number="speed" min="0" max="4" step="0.2" />
     </h1>
-    <NBURatesCreepJS class="creep" :crip-view="cripView" :speed="speed"></NBURatesCreepJS>
+    <NBURatesCreep3d class="creep" :crip-view="cripView" :speed="speed"></NBURatesCreep3d>
   </div>
 </template>
 

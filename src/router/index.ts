@@ -2,6 +2,7 @@ import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import Project1 from "@/views/menu/Project1View.vue";
 import Project2 from "@/views/menu/Project2View.vue";
 import Project3 from "@/views/menu/Project3View.vue";
+import Project4 from "@/views/menu/Project4View.vue";
 import About from "@/views/menu/AboutView.vue";
 import PageNotFound from "@/views/service/PageNotFound.vue";
 
@@ -20,6 +21,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/project3',
     name: 'project3',
     component: Project3,
+  },
+  {
+    path: '/project4',
+    name: 'project4',
+    component: Project4,
   },
   {
     path: '/about',

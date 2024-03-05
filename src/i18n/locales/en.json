@@ -6,8 +6,9 @@
   },
   "header": {
     "prg01": "Courses Newest",
-    "prg02": "Courses v.2.0",
-    "prg03": "Courses Old",
+    "prg02": "Courses v.3.0",
+    "prg03": "Courses v.2.0",
+    "prg04": "Courses Old",
     "about": "About"
   },
   "footer": {
@@ -31,10 +32,14 @@
     "disc": "Description"
   },
   "project2": {
-    "name": "Courses v.2.0",
+    "name": "Courses v.3.0",
     "disc": "Description"
   },
   "project3": {
+    "name": "Courses v.2.0",
+    "disc": "Description"
+  },
+  "project4": {
     "name": "Courses Old",
     "disc": "Description"
   },
