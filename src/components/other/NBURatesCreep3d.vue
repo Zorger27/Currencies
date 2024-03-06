@@ -1,130 +1,115 @@
-<script lang="ts">
-import {Options, Vue} from "vue-class-component";
-import axios from "axios";
+<script>
+import { ref, onMounted, onUnmounted } from 'vue';
+import * as THREE from 'three';
+// import axios from "axios";
 
-interface ExchangeRate {
-  cc: string
-  txt: string
-  rate: number
-  exchangedate: string
-}
-@Options({
-  data() {
-    return {
-      rates: [] as ExchangeRate[],
-      contentWidth: 0,
-      marqueeWidth: 0,
-      animationOffset: 0,
-      animationInterval: null as any, // 'null as any' для инициализации с поддержкой TypeScript
-    }
-  },
-  mounted() {
-    this.fetchExchangeRates().then(() => {
-      this.$nextTick(() => {
-        const content = this.$refs.marquee.querySelector('.content');
-        if (content) {
-          // Дублирование содержимого для создания непрерывного эффекта
-          content.innerHTML += content.innerHTML;
-          // Пересчитываем ширину после дублирования
-          this.calculateWidths();
-        }
-      });
+    // async fetchExchangeRates() {
+    //   try {
+    //     const response = await axios.get<ExchangeRate[]>("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
+    //     this.rates = response.data
+    //       .filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc))
+    //       .concat(response.data.filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc)));
+    //     this.createExchangeRateObjects()
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // },
+    // createExchangeRateObjects() {
+    //   this.rates.forEach((rate: any, index: number) => {
+    //     const geometry = new THREE.BoxGeometry(1, 1, 1);
+    //     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    //     const cube = new THREE.Mesh(geometry, material);
+    //
+    //     // Размещаем объекты с некоторым интервалом
+    //     cube.position.x = index * 1.5 - this.rates.length / 2;
+    //
+    //     this.scene?.add(cube);
+    //   });
+    // },
+export default {
+  name: 'NBURatesCreep3d',
+  setup() {
+    const marquee = ref(null);
+    let scene, camera, renderer, cube;
+
+    const init = () => {
+      // Создаем сцену
+      scene = new THREE.Scene();
+
+      // Создаем камеру
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 2.5;
+
+      // Создаем рендерер
+      renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      scene.add(camera);
+
+      // Создаем геометрию и материал для куба
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      const materials = [
+        new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: 1 }),
+        new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent: true, opacity: 1 }),
+        new THREE.MeshBasicMaterial({ color: 0x0000ff, transparent: true, opacity: 1 }),
+        new THREE.MeshBasicMaterial({ color: 0xffff00, transparent: true, opacity: 1 }),
+        new THREE.MeshBasicMaterial({ color: 0xff00ff, transparent: true, opacity: 1 }),
+        new THREE.MeshBasicMaterial({ color: 0x00ffff, transparent: true, opacity: 1 }),
+      ];
+      cube = new THREE.Mesh(geometry, materials);
+
+      // Добавляем куб на сцену
+      scene.add(cube);
+
+      // Добавляем рендерер в контейнер
+      marquee.value.appendChild(renderer.domElement);
+
+      // Обновляем сцену
+      const animate = () => {
+        requestAnimationFrame(animate);
+
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+
+        renderer.render(scene, camera);
+      };
+
+      animate();
+    };
+
+    const onWindowResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      // renderer.render(scene, camera);
+    };
+
+    window.addEventListener('resize', onWindowResize);
+
+    onMounted(() => {
+      init();
+      onWindowResize();
     });
-  },
-  beforeUnmount() {
-    if (this.animationInterval) {
-      clearInterval(this.animationInterval);
-    }
-    window.removeEventListener("resize", this.calculateWidths);
-  },
-  watch: {
-    speed(newSpeed: number) {
-      // Обрабатываем изменение скорости
-      this.updateAnimationSpeed(newSpeed);
-    }
-  },
-  methods: {
-    async fetchExchangeRates() {
-      try {
-        const response = await axios.get<ExchangeRate[]>("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
-        // Оставляем только выбранные валюты и удваиваем данные для создания непрерывного эффекта
-        this.rates = response.data
-          .filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc))
-          .concat(response.data.filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc)));
-        // this.rates = response.data.concat(response.data);
-        await this.$nextTick(this.calculateWidths);
-        this.setupAnimationListener();
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    calculateWidths() {
-      const marquee = this.$refs.marquee as HTMLElement | null;
-      const content = marquee?.querySelector(".content") as HTMLElement | null;
-      if (marquee && content) {
-        this.marqueeWidth = marquee.offsetWidth;
-        this.contentWidth = content.offsetWidth;
-        this.animationOffset = this.marqueeWidth / 2;
-      }
-    },
-    setupAnimationListener() {
-      window.addEventListener("resize", this.calculateWidths);
-      this.$nextTick(this.calculateWidths);
-      this.animateMarquee();
-    },
-    animateMarquee() {
-      // Остановка предыдущего интервала перед созданием нового
-      if (this.animationInterval) {
-        clearInterval(this.animationInterval);
-      }
-      this.animationInterval = setInterval(() => {
-        const fullContentWidth = this.contentWidth * 2;
 
-        if (this.animationOffset >= fullContentWidth) {
-          this.animationOffset = 0;
-        } else {
-          this.animationOffset += this.speed; // Используем this.speed для актуального значения
-        }
+    onUnmounted(() => {
+      // Выполняем необходимые действия при удалении компонента
+      // Например, очищаем ресурсы Three.js-server
+      renderer.dispose();
+    });
 
-        const content = this.$refs.marquee?.querySelector(".content");
-        if (content) {
-          content.style.transform = `translateX(${-this.animationOffset}px)`;
-        }
-      }, 10);
-    },
-    updateAnimationSpeed(newSpeed: number) {
-      // Проверяем, что speed действительно изменился, прежде чем обновлять анимацию
-      if (this.speed !== newSpeed) {
-        this.speed = newSpeed; // Обновляем скорость в состоянии компонента
-        clearInterval(this.animationInterval); // Очищаем текущий интервал
-        this.animateMarquee(); // Запускаем анимацию с новой скоростью
-      }
-    },
+    return {
+      marquee
+    };
   },
-  props: {
-    cripView: {
-      type: Boolean,
-      required: true
-    },
-    speed: {
-      type: Number,
-      default: 1,
-    },
-  },
-  components: {},
-})
-export default class NBURatesCreep3d extends Vue {}
+}
 </script>
 
 <template>
-  <div class="container" v-show="cripView">
-    <div ref="marquee" class="marquee">
-      <div class="content">
-        <div v-for="(rate, index) in rates" :key="`rate-${index}`" class="rates">
-          <span class="name">{{ rate.txt }}</span><span class="eql">=</span><span class="price">{{ rate.rate.toFixed(2) }}</span><span class="uah">{{ $t('uah') }}</span>
-        </div>
-      </div>
-    </div>
+  <div class="container">
+    <div class="marquee" ref="marquee"></div>
+<!--    <div class="scene-container" ref="canvasContainer"></div>-->
   </div>
 </template>
 
@@ -134,67 +119,22 @@ export default class NBURatesCreep3d extends Vue {}
   overflow: hidden;
   position: relative;
   .marquee {
-    overflow: hidden;
+    max-height: 70vh;
+    max-width: 100%;
     position: relative;
-    .content {
-      white-space: nowrap;
-      display: inline-block;
-      .rates {
-        display: inline-flex;
-        font-size: 2rem;
-        font-style: italic;
-        padding: 0.5rem;
-        margin: 0.5rem 1rem;
-        //border: 1px solid lightgrey;
-        //border-radius: 5px;
-        //background-color: #f1f1f1;
-        .name {
-          margin-right: 5px;
-          color: black;
-          //text-shadow: 4px 4px 8px dodgerblue;
-        }
-        .eql {
-          color: goldenrod;
-          font-weight: bold;
-          //text-shadow: 2px 2px 4px goldenrod;
-        }
-        .price {
-          margin-right: 5px;
-          margin-left: 5px;
-          color: black;
-          font-weight: bold;
-          text-shadow: 1px 1px 2px dodgerblue;
-        }
-        .uah {
-          color: black;
-          //text-shadow: 2px 2px 4px green;
-        }
-      }
-    }
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 @media(max-width: 1020px) {
-  .marquee {
-    .content {
-      .rates {
-        font-size: 1.6rem;
-        padding: 0.4rem;
-      }
-    }
-  }
+  .marquee {}
 }
 @media (max-width: 768px) {
   .container {
     margin-bottom: 0.5rem;
-    .marquee {
-      .content {
-        .rates {
-          font-size: 1.5rem;
-          padding: 0.3rem;
-        }
-      }
-    }
   }
 }
 </style>

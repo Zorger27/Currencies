@@ -6,12 +6,6 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
 
 @Options({
   mixins: [openGraphMixin],
-  data() {
-    return {
-      cripView: true,
-      speed: 1,
-    }
-  },
   mounted() {
     const mainTitle = 'Courses v.3.0';
     const title = 'Courses v.3.0';
@@ -23,11 +17,7 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);
   },
-  methods: {
-    changeCrip() {
-      this.cripView = !this.cripView;
-    },
-  },
+  // components: {CurrentDate},
   components: {NBURatesCreep3d, CurrentDate},
 })
 export default class Project2 extends Vue {
@@ -42,10 +32,9 @@ export default class Project2 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a> <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-sack-dollar']"></span></i> <input
-      v-show="cripView" type="range" v-model.number="speed" min="0" max="4" step="0.2" />
+      </a>
     </h1>
-    <NBURatesCreep3d class="creep" :crip-view="cripView" :speed="speed"></NBURatesCreep3d>
+    <NBURatesCreep3d></NBURatesCreep3d>
   </div>
 </template>
 
@@ -60,7 +49,6 @@ export default class Project2 extends Vue {
     a {text-decoration: none; color: rebeccapurple;}
     a:hover {color: cornflowerblue;}
   }
-  .creep {background: none;}
 }
 @media(max-width: 1020px) {
   .container {
