@@ -17,8 +17,8 @@ export default {
         const selectedRates = response.data
           .filter(rate => ["USD", "EUR", "GBP", "AED", "TRY", "XAU", "XAG", "XPT", "XPD"].includes(rate.cc));
 
-        selectedRates.forEach((rate, index) => {
-          createCurrencyObject(rate, index);
+        selectedRates.forEach((rate) => {
+          createCurrencyObject(rate);
         });
       } catch (error) {
         console.error(error);
@@ -27,20 +27,21 @@ export default {
 
     let nextPositionX = 0; // Стартовая позиция для первого объекта
 
-    const createCurrencyObject = (rate, index) => {
-      const currencyText = `${rate.cc} = ${rate.rate.toFixed(2)}`;
+    const createCurrencyObject = (rate) => {
+      const currencyText = `${rate.txt} = ${rate.rate.toFixed(2)} грн.`;
       const loader = new FontLoader();
 
-      loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
+        loader.load('https://threejs.org/examples/fonts/droid/droid_serif_regular.typeface.json', (font) => {
+          // loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
         const geometry = new TextGeometry(currencyText, {
           font: font,
-          size: 0.1,
+          size: 0.2,
           height: 0.01,
         });
         geometry.computeBoundingBox(); // Расчет границ текста
         const textWidth = geometry.boundingBox.max.x - geometry.boundingBox.min.x;
 
-        const material = new THREE.MeshBasicMaterial({color: 0x9932cc});
+        const material = new THREE.MeshBasicMaterial({color: 0x20b2aa});
         const currencyObject = new THREE.Mesh(geometry, material);
 
         // Выставляем позицию с учетом предыдущего текста и добавляем "пробелы" между ними
@@ -58,7 +59,7 @@ export default {
     const init = () => {
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.z = 1;
+      camera.position.z = 2;
       renderer = new THREE.WebGLRenderer({alpha: true});
       renderer.setSize(window.innerWidth, window.innerHeight);
       scene.add(camera);
@@ -100,12 +101,23 @@ export default {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     };
 
+    const updateCameraPosition = () => {
+      if (window.innerWidth <= 768) {
+        camera.position.z = 5;
+      } else {
+        camera.position.z = 2;
+      }
+    };
 
-    window.addEventListener('resize', onWindowResize);
+    window.addEventListener('resize', () => {
+      onWindowResize();
+      updateCameraPosition();
+    });
 
     onMounted(() => {
       init();
       onWindowResize();
+      updateCameraPosition();
     });
 
     onUnmounted(() => {
@@ -132,7 +144,7 @@ export default {
   position: relative;
 
   .marquee {
-    max-height: 70vh;
+    max-height: 40vh;
     max-width: 100%;
     position: relative;
     overflow: hidden;
