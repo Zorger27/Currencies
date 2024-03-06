@@ -28,7 +28,7 @@ export default {
     let nextPositionX = 0; // Стартовая позиция для первого объекта
 
     const createCurrencyObject = (rate) => {
-      const currencyText = `${rate.txt} = ${rate.rate.toFixed(2)} грн.`;
+      const currencyText = `${rate.cc} = ${rate.rate.toFixed(2)} грн.`;
       const loader = new FontLoader();
 
         loader.load('https://threejs.org/examples/fonts/droid/droid_serif_regular.typeface.json', (font) => {
@@ -73,7 +73,7 @@ export default {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      const speed = 0.01; // Скорость движения
+      const speed = 0.02; // Скорость движения
 
       currencies.forEach((currency, index) => {
         // Двигаем объекты влево
@@ -144,7 +144,7 @@ export default {
   position: relative;
 
   .marquee {
-    max-height: 40vh;
+    max-height: 30vh;
     max-width: 100%;
     position: relative;
     overflow: hidden;

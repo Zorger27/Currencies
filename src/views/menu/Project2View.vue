@@ -7,8 +7,8 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
 @Options({
   mixins: [openGraphMixin],
   mounted() {
-    const mainTitle = 'Courses v.3.0';
-    const title = 'Courses v.3.0';
+    const mainTitle = 'Courses 3D';
+    const title = 'Courses 3D';
     const metaDescription = 'Exchange rates from National Bank of Ukraine';
     const description = 'Exchange rates from National Bank of Ukraine';
     const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/project2.jpg';
