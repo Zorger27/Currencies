@@ -7,6 +7,16 @@ import axios from 'axios';
 
 export default {
   name: 'NBURatesCreep3d',
+  props: {
+    cripView3d: {
+      type: Boolean,
+      required: true
+    },
+    speed3d: {
+      type: Number,
+      default: 1,
+    },
+  },
   setup() {
     const marquee = ref(null);
     let scene, camera, renderer, currencies = [];
@@ -132,7 +142,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" v-show="cripView3d">
     <div class="marquee" ref="marquee"></div>
   </div>
 </template>

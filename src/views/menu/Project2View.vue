@@ -6,6 +6,12 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
 
 @Options({
   mixins: [openGraphMixin],
+  data() {
+    return {
+      cripView3d: true,
+      speed3d: 1,
+    }
+  },
   mounted() {
     const mainTitle = 'Courses 3D';
     const title = 'Courses 3D';
@@ -17,7 +23,11 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);
   },
-  // components: {CurrentDate},
+  methods: {
+    changeCrip3d() {
+      this.cripView3d = !this.cripView3d;
+    },
+  },
   components: {NBURatesCreep3d, CurrentDate},
 })
 export default class Project2 extends Vue {
@@ -32,10 +42,11 @@ export default class Project2 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a>
+      </a> <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-check-circle' : 'fa-piggy-bank']"></span></i> <input
+      v-show="cripView3d" type="range" v-model.number="speed3d" min="0" max="4" step="0.2" />
     </h1>
     <div class="creep3d">
-      <NBURatesCreep3d></NBURatesCreep3d>
+      <NBURatesCreep3d :crip-view3d="cripView3d" :speed3d="speed3d"></NBURatesCreep3d>
     </div>
   </div>
 </template>
