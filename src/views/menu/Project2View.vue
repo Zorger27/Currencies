@@ -34,7 +34,9 @@ export default class Project2 extends Vue {
         {{ $t('nbu') }}
       </a>
     </h1>
-    <NBURatesCreep3d></NBURatesCreep3d>
+    <div class="creep3d">
+      <NBURatesCreep3d></NBURatesCreep3d>
+    </div>
   </div>
 </template>
 
@@ -49,6 +51,15 @@ export default class Project2 extends Vue {
     a {text-decoration: none; color: rebeccapurple;}
     a:hover {color: cornflowerblue;}
   }
+  .creep3d {
+    max-height: 20vh;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media(max-width: 1020px) {
   .container {
@@ -61,6 +72,9 @@ export default class Project2 extends Vue {
   .container {
     h1 {font-size: 2rem;margin: 0.5rem auto;}
     .bank {font-size: 1.6rem;}
+    .creep3d {
+      max-height: 15vh;
+    }
   }
 }
 </style>

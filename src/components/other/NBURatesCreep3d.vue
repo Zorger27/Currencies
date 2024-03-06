@@ -103,7 +103,7 @@ export default {
 
     const updateCameraPosition = () => {
       if (window.innerWidth <= 768) {
-        camera.position.z = 5;
+        camera.position.z = 3.5;
       } else {
         camera.position.z = 2;
       }
@@ -144,13 +144,7 @@ export default {
   position: relative;
 
   .marquee {
-    max-height: 30vh;
-    max-width: 100%;
-    position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }
 </style>
