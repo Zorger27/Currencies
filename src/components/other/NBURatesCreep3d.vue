@@ -33,9 +33,9 @@ export default {
         const geometry = new TextGeometry(currencyText, {
           font: font,
           size: 0.1,
-          height: 0.02,
+          height: 0.03,
         });
-        const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+        const material = new THREE.MeshBasicMaterial({color: 0xff0000});
         const currencyObject = new THREE.Mesh(geometry, material);
 
         currencyObject.position.x = index * 1.5 - currencies.length / 2;
@@ -62,9 +62,20 @@ export default {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      currencies.forEach((currency) => {
-        currency.rotation.x += 0.01;
-        currency.rotation.y += 0.01;
+      // Скорость движения валюты. Меняйте это значение, чтобы ускорить или замедлить.
+      const speed = 0.005;
+
+      currencies.forEach((currency, index) => {
+        // Двигаем объекты влево
+        currency.position.x -= speed;
+
+        // Перемещаем объект обратно в начало, когда он выходит за пределы видимости
+        if (currency.position.x < -window.innerWidth / window.innerHeight * 2.5) {
+          const lastCurrency = currencies[currencies.length - 1];
+          currency.position.x = lastCurrency.position.x + 1.5;
+          currencies.splice(index, 1);
+          currencies.push(currency);
+        }
       });
 
       renderer.render(scene, camera);
