@@ -25,20 +25,30 @@ export default {
       }
     };
 
+    let nextPositionX = 0; // Стартовая позиция для первого объекта
+
     const createCurrencyObject = (rate, index) => {
-      const currencyText = `${rate.cc} ${rate.rate.toFixed(2)}`;
+      const currencyText = `${rate.cc} = ${rate.rate.toFixed(2)}`;
       const loader = new FontLoader();
 
       loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
         const geometry = new TextGeometry(currencyText, {
           font: font,
           size: 0.1,
-          height: 0.03,
+          height: 0.01,
         });
-        const material = new THREE.MeshBasicMaterial({color: 0xff0000});
+        geometry.computeBoundingBox(); // Расчет границ текста
+        const textWidth = geometry.boundingBox.max.x - geometry.boundingBox.min.x;
+
+        const material = new THREE.MeshBasicMaterial({color: 0x9932cc});
         const currencyObject = new THREE.Mesh(geometry, material);
 
-        currencyObject.position.x = index * 1.5 - currencies.length / 2;
+        // Выставляем позицию с учетом предыдущего текста и добавляем "пробелы" между ними
+        currencyObject.position.x = nextPositionX;
+
+        // Обновляем nextPositionX для следующего объекта, добавляем ширину текущего текста и примерное расстояние для двух "пробелов"
+        // Подберите значение 0.2 (или другое) в зависимости от желаемого расстояния между словами
+        nextPositionX += textWidth + 0.2;
 
         currencies.push(currencyObject);
         scene.add(currencyObject);
@@ -48,7 +58,7 @@ export default {
     const init = () => {
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.z = 2.5;
+      camera.position.z = 1;
       renderer = new THREE.WebGLRenderer({alpha: true});
       renderer.setSize(window.innerWidth, window.innerHeight);
       scene.add(camera);
@@ -62,8 +72,7 @@ export default {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Скорость движения валюты. Меняйте это значение, чтобы ускорить или замедлить.
-      const speed = 0.005;
+      const speed = 0.01; // Скорость движения
 
       currencies.forEach((currency, index) => {
         // Двигаем объекты влево
@@ -72,7 +81,9 @@ export default {
         // Перемещаем объект обратно в начало, когда он выходит за пределы видимости
         if (currency.position.x < -window.innerWidth / window.innerHeight * 2.5) {
           const lastCurrency = currencies[currencies.length - 1];
-          currency.position.x = lastCurrency.position.x + 1.5;
+          const spaceBetween = 0.2; // Желаемое расстояние между объектами
+          currency.position.x = lastCurrency.position.x + lastCurrency.geometry.boundingBox.max.x - lastCurrency.geometry.boundingBox.min.x + spaceBetween;
+          // Переупорядочиваем массив, чтобы сохранить последовательность
           currencies.splice(index, 1);
           currencies.push(currency);
         }
