@@ -37,28 +37,30 @@ export default {
       const currencyText = `${rate.txt} = ${rate.rate.toFixed(2)} грн.`;
       const loader = new FontLoader();
 
-        loader.load('https://threejs.org/examples/fonts/droid/droid_serif_regular.typeface.json', (font) => {
-          // loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
+      loader.load('https://threejs.org/examples/fonts/droid/droid_serif_regular.typeface.json', (font) => {
         const geometry = new TextGeometry(currencyText, {
           font: font,
           size: 0.2,
           height: 0.01,
         });
-        geometry.computeBoundingBox(); // Расчет границ текста
+
+        geometry.computeBoundingBox();
         const textWidth = geometry.boundingBox.max.x - geometry.boundingBox.min.x;
 
-        const material = new THREE.MeshBasicMaterial({color: 0x0000FF, transparent: true, opacity: 0.8});
-        const currencyObject = new THREE.Mesh(geometry, material);
+        const textureLoader = new THREE.TextureLoader();
+        textureLoader.load('/assets/background/background04.webp', function (texture) {
+          const material = new THREE.MeshBasicMaterial({ map: texture });
+          const currencyObject = new THREE.Mesh(geometry, material);
 
-        // Выставляем позицию с учетом предыдущего текста и добавляем "пробелы" между ними
-        currencyObject.position.x = nextPositionX;
+          // Выставляем позицию с учетом предыдущего текста и добавляем "пробелы" между ними
+          currencyObject.position.x = nextPositionX;
+          // Обновляем nextPositionX для следующего объекта, добавляем ширину текущего текста и примерное расстояние для двух "пробелов"
+          // Подберите значение 0.2 (или другое) в зависимости от желаемого расстояния между словами
+          nextPositionX += textWidth + 0.2;
 
-        // Обновляем nextPositionX для следующего объекта, добавляем ширину текущего текста и примерное расстояние для двух "пробелов"
-        // Подберите значение 0.2 (или другое) в зависимости от желаемого расстояния между словами
-        nextPositionX += textWidth + 0.2;
-
-        currencies.push(currencyObject);
-        scene.add(currencyObject);
+          currencies.push(currencyObject);
+          scene.add(currencyObject);
+        });
       });
     };
 
@@ -67,6 +69,7 @@ export default {
       camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
       camera.position.z = 2;
       renderer = new THREE.WebGLRenderer({alpha: true});
+      // renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth, window.innerHeight);
       scene.add(camera);
 
