@@ -78,15 +78,8 @@ export default class Project1 extends Vue {
 
   .bank {
     font-size: 2.5rem;
-
-    a {
-      text-decoration: none;
-      color: rebeccapurple;
-    }
-
-    a:hover {
-      color: cornflowerblue;
-    }
+    a {text-decoration: none;color: rebeccapurple;}
+    a:hover {color: cornflowerblue;}
   }
   .creep3d {
     max-height: 30vh;
@@ -109,10 +102,7 @@ export default class Project1 extends Vue {
       font-size: 2.3rem;
       margin: 0.6rem auto;
     }
-
-    .bank {
-      font-size: 2rem;
-    }
+    .bank {font-size: 2rem;}
   }
 }
 
@@ -122,10 +112,7 @@ export default class Project1 extends Vue {
       font-size: 2rem;
       margin: 0.5rem auto;
     }
-
-    .bank {
-      font-size: 1.6rem;
-    }
+    .bank {font-size: 1.6rem;}
   }
 }
 </style>
