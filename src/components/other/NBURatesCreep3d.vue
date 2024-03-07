@@ -38,7 +38,7 @@ export default {
     let nextPositionX = 0; // Стартовая позиция для первого объекта
 
     const createCurrencyObject = (rate) => {
-      const currencyText = `${rate.cc} = ${rate.rate.toFixed(2)} грн.`;
+      const currencyText = `${rate.txt} = ${rate.rate.toFixed(2)} грн.`;
       const loader = new FontLoader();
 
         loader.load('https://threejs.org/examples/fonts/droid/droid_serif_regular.typeface.json', (font) => {
@@ -89,11 +89,17 @@ export default {
         // Двигаем объекты влево
         currency.position.x -= speed;
 
-        // Перемещаем объект обратно в начало, когда он выходит за пределы видимости
-        if (currency.position.x < -window.innerWidth / window.innerHeight * 2.5) {
+        // Вычисляем правую границу видимости для объекта
+        // Мы учитываем ширину объекта, чтобы дождаться его полного исчезновения.
+        const objectRightEdge = currency.position.x + (currency.geometry.boundingBox.max.x - currency.geometry.boundingBox.min.x);
+
+        // Перемещаем объект обратно в начало, когда он полностью выходит за левую границу видимости
+        if (objectRightEdge < -window.innerWidth / window.innerHeight * 2.5) {
+          // Положение последнего элемента в массиве, чтобы определить, куда переместить текущий объект
           const lastCurrency = currencies[currencies.length - 1];
           const spaceBetween = 0.2; // Желаемое расстояние между объектами
           currency.position.x = lastCurrency.position.x + lastCurrency.geometry.boundingBox.max.x - lastCurrency.geometry.boundingBox.min.x + spaceBetween;
+
           // Переупорядочиваем массив, чтобы сохранить последовательность
           currencies.splice(index, 1);
           currencies.push(currency);
