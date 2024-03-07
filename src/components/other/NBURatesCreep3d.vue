@@ -12,10 +12,6 @@ export default {
       type: Boolean,
       required: true
     },
-    speed3d: {
-      type: Number,
-      default: 1,
-    },
   },
   setup() {
     const marquee = ref(null);

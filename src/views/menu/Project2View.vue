@@ -9,7 +9,6 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
   data() {
     return {
       cripView3d: true,
-      speed3d: 1,
     }
   },
   mounted() {
@@ -42,11 +41,10 @@ export default class Project2 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a> <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-yin-yang' : 'fa-piggy-bank']"></span></i> <input
-      v-show="cripView3d" type="range" v-model.number="speed3d" min="0" max="4" step="0.2" />
+      </a> <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-yin-yang' : 'fa-piggy-bank']"></span></i>
     </h1>
     <div class="creep3d">
-      <NBURatesCreep3d :crip-view3d="cripView3d" :speed3d="speed3d"></NBURatesCreep3d>
+      <NBURatesCreep3d :crip-view3d="cripView3d"></NBURatesCreep3d>
     </div>
   </div>
 </template>
