@@ -42,7 +42,7 @@ export default class Project2 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a> <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-check-circle' : 'fa-piggy-bank']"></span></i> <input
+      </a> <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-yin-yang' : 'fa-piggy-bank']"></span></i> <input
       v-show="cripView3d" type="range" v-model.number="speed3d" min="0" max="4" step="0.2" />
     </h1>
     <div class="creep3d">
