@@ -47,7 +47,7 @@ export default {
         geometry.computeBoundingBox(); // Расчет границ текста
         const textWidth = geometry.boundingBox.max.x - geometry.boundingBox.min.x;
 
-        const material = new THREE.MeshBasicMaterial({color: 0x20b2aa});
+        const material = new THREE.MeshBasicMaterial({color: 0x0000FF, transparent: true, opacity: 0.8});
         const currencyObject = new THREE.Mesh(geometry, material);
 
         // Выставляем позицию с учетом предыдущего текста и добавляем "пробелы" между ними
