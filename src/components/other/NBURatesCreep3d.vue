@@ -79,7 +79,7 @@ export default {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      const speed = 0.02; // Скорость движения
+      const speed = 0.01; // Скорость движения
 
       currencies.forEach((currency, index) => {
         // Двигаем объекты влево
@@ -115,9 +115,9 @@ export default {
 
     const updateCameraPosition = () => {
       if (window.innerWidth <= 768) {
-        camera.position.z = 3.5;
+        camera.position.z = 2.5;
       } else {
-        camera.position.z = 2;
+        camera.position.z = 1;
       }
     };
 
