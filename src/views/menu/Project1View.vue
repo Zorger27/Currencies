@@ -4,6 +4,7 @@ import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
 import CurrentDate from "@/components/util/CurrentDate.vue";
 import NBURates from "@/components/other/NBURates.vue";
 import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
+import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
 
 @Options({
   mixins: [openGraphMixin],
@@ -11,6 +12,7 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
     return {
       tableView: false,
       cripView: true,
+      cripView3d: false,
       speed: 1,
     }
   },
@@ -31,9 +33,12 @@ import NBURatesCreepJS from "@/components/other/NBURatesCreepJS.vue";
     },
     changeCrip() {
       this.cripView = !this.cripView;
-    }
+    },
+    changeCrip3d() {
+      this.cripView3d = !this.cripView3d;
+    },
   },
-  components: {NBURatesCreepJS, NBURates, CurrentDate},
+  components: {NBURatesCreep3d, NBURatesCreepJS, NBURates, CurrentDate},
 })
 export default class Project1 extends Vue {
 };
@@ -48,9 +53,13 @@ export default class Project1 extends Vue {
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
       </a> <i @click="changeView"><span :class="['fa', tableView ? 'fa-list' : 'fa-th']"></span></i>
-      <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-check-circle' : 'fa-sack-dollar']"></span></i> <input
+      <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-birthday-cake' : 'fa-yin-yang']"></span></i> <i
+      @click="changeCrip"> <span :class="['fa', cripView ? 'fa-check-circle' : 'fa-sack-dollar']"></span></i> <input
       v-show="cripView" type="range" v-model.number="speed" min="0" max="4" step="0.2" />
     </h1>
+    <div class="creep3d">
+      <NBURatesCreep3d :crip-view3d="cripView3d"></NBURatesCreep3d>
+    </div>
     <NBURatesCreepJS class="creep" :crip-view="cripView" :speed="speed"></NBURatesCreepJS>
     <NBURates :table-view="tableView"></NBURates>
   </div>
@@ -78,6 +87,15 @@ export default class Project1 extends Vue {
     a:hover {
       color: cornflowerblue;
     }
+  }
+  .creep3d {
+    max-height: 30vh;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .creep {

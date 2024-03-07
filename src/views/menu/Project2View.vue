@@ -8,7 +8,7 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
   mixins: [openGraphMixin],
   data() {
     return {
-      cripView3d: true,
+      cripView3d: false,
     }
   },
   mounted() {
@@ -41,7 +41,7 @@ export default class Project2 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a> <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-yin-yang' : 'fa-piggy-bank']"></span></i>
+      </a> <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-birthday-cake' : 'fa-yin-yang']"></span></i>
     </h1>
     <div class="creep3d">
       <NBURatesCreep3d :crip-view3d="cripView3d"></NBURatesCreep3d>
