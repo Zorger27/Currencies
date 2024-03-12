@@ -50,7 +50,7 @@ export default class Project1 extends Vue {
     <line></line>
     <CurrentDate></CurrentDate>
     <h1 class="bank">
-      <a href="https://bank.gov.ua" title="In more detail..." target="_blank">
+      <a href="https://bank.gov.ua/ua/open-data/api-dev" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
       </a> <i @click="changeView"><span :class="['fa', tableView ? 'fa-list' : 'fa-th']"></span></i>
       <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-gift' : 'fa-yin-yang']"></span></i> <i

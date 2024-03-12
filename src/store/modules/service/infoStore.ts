@@ -79,6 +79,12 @@ const state = {
         version: "4.0",
         url: "https://analytics.google.com"
       },
+      {
+        id: 14,
+        title: "NBU API",
+        version: "",
+        url: "https://bank.gov.ua/ua/open-data/api-dev"
+      },
     ]
 };
 const getters = {};
