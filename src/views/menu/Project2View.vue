@@ -69,6 +69,7 @@ export default class Project2 extends Vue {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: none;
   }
 }
 @media(max-width: 1020px) {

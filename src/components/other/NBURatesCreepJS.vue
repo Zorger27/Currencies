@@ -120,7 +120,7 @@ export default class NBURatesCreepJS extends Vue {}
 </script>
 
 <template>
-  <div class="container" v-show="cripView">
+  <div class="inner" v-show="cripView">
     <div ref="marquee" class="marquee">
       <div class="content">
         <div v-for="(rate, index) in rates" :key="`rate-${index}`" class="rates">
@@ -132,7 +132,7 @@ export default class NBURatesCreepJS extends Vue {}
 </template>
 
 <style lang="scss" scoped>
-.container {
+.inner {
   margin-bottom: 1rem;
   overflow: hidden;
   position: relative;
@@ -178,17 +178,19 @@ export default class NBURatesCreepJS extends Vue {}
 }
 
 @media(max-width: 1020px) {
-  .marquee {
-    .content {
-      .rates {
-        font-size: 1.6rem;
-        padding: 0.4rem;
+  .inner {
+    .marquee {
+      .content {
+        .rates {
+          font-size: 1.6rem;
+          padding: 0.4rem;
+        }
       }
     }
   }
 }
 @media (max-width: 768px) {
-  .container {
+  .inner {
     margin-bottom: 0.5rem;
     .marquee {
       .content {
