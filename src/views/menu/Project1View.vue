@@ -12,7 +12,7 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
     return {
       tableView: false,
       cripView: true,
-      cripView3d: false,
+      cripView3d: true,
       speed: 1,
     }
   },

@@ -8,7 +8,7 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
   mixins: [openGraphMixin],
   data() {
     return {
-      cripView3d: false,
+      cripView3d: true,
     }
   },
   mounted() {
