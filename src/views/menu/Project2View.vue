@@ -74,15 +74,13 @@ export default class Project2 extends Vue {
 }
 @media(max-width: 1020px) {
   .container {
-    h1 {font-size: 2.3rem;margin: 0.6rem auto;}
-    .bank {font-size: 2rem;margin-bottom: 0.7rem;}
+    h1, .bank {font-size: 2.3rem;margin: 0.6rem auto;}
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    h1 {font-size: 2rem;margin: 0.5rem auto;}
-    .bank {font-size: 1.6rem;margin-bottom: 0.5rem;}
+    h1, .bank {font-size: 2rem;margin: 0.5rem auto;}
     .creep3d {
       max-height: 20vh;
     }

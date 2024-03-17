@@ -85,11 +85,7 @@ export default class About extends Vue {}
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  h1 {
-    font-size: 2.5rem;
-    margin: 0.7rem auto;
-    color: mediumvioletred;
-  }
+  h1 {font-size: 2.5rem;margin: 0.7rem auto;color: mediumvioletred;}
   .prj{
     display: inline-flex;
     padding: 1rem;
@@ -163,8 +159,8 @@ export default class About extends Vue {}
 
 @media(max-width: 1020px) {
   .about {
-    .title {font-size: 2rem;}
     h1 {font-size: 2.3rem;margin: 0.6rem auto;}
+    .title {font-size: 2rem;}
 
     .prj {
       padding: 0.8rem;
@@ -183,8 +179,8 @@ export default class About extends Vue {}
 }
 @media (max-width: 768px) {
   .about {
-    .title {font-size: 1.6rem;}
     h1 {font-size: 2rem;margin: 0.5rem auto;}
+    .title {font-size: 1.6rem;}
     .inner {margin-bottom: 0.3rem;}
 
     .prj {

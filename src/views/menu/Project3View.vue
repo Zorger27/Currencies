@@ -64,15 +64,13 @@ export default class Project3 extends Vue {
 }
 @media(max-width: 1020px) {
   .container {
-    h1 {font-size: 2.3rem;margin: 0.6rem auto;}
-    .bank {font-size: 2rem;}
+    h1, .bank {font-size: 2.3rem;margin: 0.6rem auto;}
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    h1 {font-size: 2rem;margin: 0.5rem auto;}
-    .bank {font-size: 1.6rem;}
+    h1, .bank {font-size: 2rem;margin: 0.5rem auto;}
   }
 }
 </style>
