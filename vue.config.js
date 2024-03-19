@@ -75,6 +75,7 @@ module.exports = {
           { path: '/', priority: 1, changefreq: 'always' },
           { path: '/project2', priority: 1, changefreq: 'daily' },
           { path: '/project3', priority: 1, changefreq: 'daily' },
+          { path: '/project4', priority: 1, changefreq: 'daily' },
           { path: '/about', priority: 1, changefreq: 'always' },
         ],
         options: {
