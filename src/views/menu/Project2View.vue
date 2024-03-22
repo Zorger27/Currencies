@@ -41,7 +41,7 @@ export default class Project2 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua/ua/open-data/api-dev" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a> <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-gift' : 'fa-yin-yang']"></span></i>
+      </a> <i @click="changeCrip3d"><span :class="['fa', cripView3d ? 'fa-yin-yang' : 'fa-sack-dollar']"></span></i>
     </h1>
     <div class="creep3d">
       <NBURatesCreep3d :crip-view3d="cripView3d"></NBURatesCreep3d>
