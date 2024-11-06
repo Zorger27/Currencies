@@ -41,7 +41,7 @@ export default class Project4 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua/ua/open-data/api-dev" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a> <i @click="changeView"><span :class="['fa', tableView ? 'fa-list' : 'fa-th']"></span></i>
+      </a> <i :title="[tableView ? 'Start viewing in List view' : 'Start viewing in Table view']" @click="changeView"><span :class="['fa', tableView ? 'fa-list' : 'fa-th']"></span></i>
     </h1>
     <NBURates :table-view="tableView"></NBURates>
   </div>

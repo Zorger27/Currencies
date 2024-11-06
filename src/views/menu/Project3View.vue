@@ -42,8 +42,8 @@ export default class Project3 extends Vue {
     <h1 class="bank">
       <a href="https://bank.gov.ua/ua/open-data/api-dev" title="In more detail..." target="_blank">
         {{ $t('nbu') }}
-      </a> <i @click="changeCrip"><span :class="['fa', cripView ? 'fa-face-grin-stars' : 'fa-wallet']"></span></i> <input
-      v-show="cripView" type="range" v-model.number="speed" min="0" max="6" step="0.2" />
+      </a> <i :title="[cripView ? 'Close Creeping line' : 'Start Creeping line']" @click="changeCrip"><span :class="['fa', cripView ? 'fa-face-grin-stars' : 'fa-wallet']"></span></i> <input
+      title="Changing speed of Creeping line" v-show="cripView" type="range" v-model.number="speed" min="0" max="6" step="0.2" />
     </h1>
     <NBURatesCreepJS class="creep" :crip-view="cripView" :speed="speed"></NBURatesCreepJS>
   </div>
