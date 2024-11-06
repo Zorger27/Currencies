@@ -5,10 +5,10 @@
     "es": "Spanish"
   },
   "header": {
-    "prg01": "Courses Newest",
-    "prg02": "Courses 3D",
-    "prg03": "Courses v.2.0",
-    "prg04": "Courses Old",
+    "prg01": "Three in One",
+    "prg02": "Creeping line 3D",
+    "prg03": "Creeping line",
+    "prg04": "Table / List",
     "about": "About"
   },
   "footer": {
@@ -28,19 +28,19 @@
   "uah": "uah",
   "usd": "usd",
   "project1": {
-    "name": "Courses Newest",
+    "name": "Three in One",
     "disc": "Description"
   },
   "project2": {
-    "name": "Courses 3D",
+    "name": "Creeping line 3D",
     "disc": "Description"
   },
   "project3": {
-    "name": "Courses v.2.0",
+    "name": "Creeping line",
     "disc": "Description"
   },
   "project4": {
-    "name": "Courses Old",
+    "name": "Table / List",
     "disc": "Description"
   },
   "about": {

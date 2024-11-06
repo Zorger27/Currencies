@@ -12,8 +12,8 @@ import NBURates from "@/components/other/NBURates.vue";
     }
   },
   mounted() {
-    const mainTitle = 'Courses Old';
-    const title = 'Courses Old';
+    const mainTitle = 'Table / List';
+    const title = 'Table / List';
     const metaDescription = 'Exchange rates from National Bank of Ukraine';
     const description = 'Exchange rates from National Bank of Ukraine';
     const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/project4.jpg';

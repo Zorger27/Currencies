@@ -5,10 +5,10 @@
     "es": "Español"
   },
   "header": {
-    "prg01": "Cursos más nuevo",
-    "prg02": "Cursos 3D",
-    "prg03": "Cursos v.2.0",
-    "prg04": "Cursos antiguos",
+    "prg01": "Tres en Uno",
+    "prg02": "Línea progresiva 3D",
+    "prg03": "Línea progresiva",
+    "prg04": "Tabla / Lista",
     "about": "Sobre"
   },
   "footer": {
@@ -28,19 +28,19 @@
   "uah": "uah",
   "usd": "usd",
   "project1": {
-    "name": "Cursos más nuevo",
+    "name": "Tres en Uno",
     "disc": "Descripción"
   },
   "project2": {
-    "name": "Cursos 3D",
+    "name": "Línea progresiva 3D",
     "disc": "Descripción"
   },
   "project3": {
-    "name": "Cursos v.2.0",
+    "name": "Línea progresiva",
     "disc": "Descripción"
   },
   "project4": {
-    "name": "Cursos antiguos",
+    "name": "Tabla / Lista",
     "disc": "Descripción"
   },
   "about": {

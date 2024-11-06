@@ -12,8 +12,8 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
     }
   },
   mounted() {
-    const mainTitle = 'Courses 3D';
-    const title = 'Courses 3D';
+    const mainTitle = 'Creeping line 3D';
+    const title = 'Creeping line 3D';
     const metaDescription = 'Exchange rates from National Bank of Ukraine';
     const description = 'Exchange rates from National Bank of Ukraine';
     const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/project2.jpg';
