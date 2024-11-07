@@ -2,7 +2,8 @@
 ### You can view my CV (Landing Page) here: [Curriculum VITAE](https://zorger27.github.io)❗️ ###
 ### You can view my Portfolio (SPA) here: [My Portfolio](https://Zorin.Expert)❗️ ###
 ### Technologies: Three.js, Vue.js, VueX, HTML5, CSS3, FlexBox CSS, JavaScript, TypeScript. ###
-![Screen_01](https://github.com/Zorger27/Currencies/assets/30940416/044049e5-bea1-45a3-8b66-f058aa847dc9)
+![07-11-2024](https://github.com/user-attachments/assets/d5232052-3dfb-4114-ac5c-7e5618245448)
+
 
 ### Project setup (install dependencies)
 ```
