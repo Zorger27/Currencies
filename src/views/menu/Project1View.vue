@@ -17,8 +17,8 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
     }
   },
   mounted() {
-    const mainTitle = 'Three in One';
-    const title = 'Three in One';
+    const mainTitle = 'Three-in-One';
+    const title = 'Three-in-One';
     const metaDescription = 'Exchange rates from National Bank of Ukraine';
     const description = 'Exchange rates from National Bank of Ukraine';
     const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/project1.jpg';
