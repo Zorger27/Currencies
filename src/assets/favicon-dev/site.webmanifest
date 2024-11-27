@@ -1,6 +1,6 @@
 {
-    "name": "Currencies",
-    "short_name": "Currencies",
+    "name": "Exchange Rates",
+    "short_name": "Exchange Rates",
     "icons": [
         {
             "src": "./public/assets/favicon-dev/android-chrome-192x192.png",

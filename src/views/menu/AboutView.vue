@@ -13,8 +13,8 @@ import {openGraphMixin} from "@/assets/ogimage/openGraphMixin";
     }
   },
   mounted() {
-    const mainTitle = 'About Courses';
-    const title = 'About Courses';
+    const mainTitle = 'About Exchange Rates';
+    const title = 'About Exchange Rates';
     const metaDescription = 'Exchange rates from National Bank of Ukraine';
     const description = 'Exchange rates from National Bank of Ukraine';
     const imageUrl = 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/about.jpg';

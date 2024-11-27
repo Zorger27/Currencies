@@ -1,6 +1,6 @@
 {
-  "name": "Currencies",
-  "short_name": "Currencies",
+  "name": "Exchange Rates",
+  "short_name": "Exchange Rates",
   "theme_color": "#4DBA87",
   "start_url": "/",
   "display": "standalone",

@@ -9,7 +9,7 @@ module.exports = {
       entry: 'src/main.ts',
       template: 'public/index.html',
       filename: 'index.html',
-      title: 'Currencies',
+      title: 'Exchange Rates',
     }
   },
   pwa: {
@@ -49,8 +49,8 @@ module.exports = {
         metas: [
           {attributes: {name: 'google-site-verification', content: 'Gq9vrXtN91P1JteGFo-xrlLKT0PR8u-4P4xs21oUr8Y'}},
           {attributes: {name: 'description', content: 'Exchange rates from National Bank of Ukraine'}},
-          {attributes: {property: 'og:title', content: 'Currencies'}},
-          {attributes: {property: 'twitter:title', content: 'Currencies'}},
+          {attributes: {property: 'og:title', content: 'Exchange Rates'}},
+          {attributes: {property: 'twitter:title', content: 'Exchange Rates'}},
           {attributes: {property: 'og:description', content: 'Exchange rates from NBU'}},
           {attributes: {property: 'twitter:description', content: 'Exchange rates from NBU'}},
           {attributes: {property: 'og:image', content: 'https://currencies-zeta.vercel.app/assets/ogimage/bmp/image_all.jpg'}},
@@ -69,7 +69,7 @@ module.exports = {
         prefix: 'assets/favicon/', // Этот префикс для файла index.html, чтобы правильно прописать пути иконок с сервера!
         manifest: './src/assets/manifest/manifest.webmanifest',
         favicons: {
-          appName: 'Currencies',
+          appName: 'Exchange Rates',
           appDescription: 'Exchange rates from NBU',
           developerName: 'Zorger',
           developerURL: null

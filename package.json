@@ -1,6 +1,6 @@
 {
   "name": "currencies",
-  "description": "Currencies",
+  "description": "Exchange Rates",
   "version": "0.1.0",
   "private": true,
   "scripts": {
