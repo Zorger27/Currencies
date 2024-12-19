@@ -46,9 +46,9 @@
   "about": {
     "title": "Exchange rates from NBU",
     "more01": "More information...",
-    "more02": "This modern web application is designed to provide a convenient and visual display of current foreign exchange rates.",
-    "more03": "The app retrieves real-time data from the National Bank of Ukraine API, displaying exchange rates relative to the Ukrainian hryvnia (UAH) in innovative and interactive formats: Table or List, Creeping line, Creeping line 3D, Three-in-One.",
-    "more04": "The application supports three languages (Ukrainian, English, and Spanish), enhancing its functionality and making it suitable for an international audience. The interactive interface and visual effects turn the simple task of viewing exchange rates into an engaging experience.",
+    "more02": "\uD83D\uDCB9 This modern web application is designed to provide a convenient and visual display of current foreign exchange rates.",
+    "more03": "\uD83D\uDE80 The app retrieves real-time data from the National Bank of Ukraine API, displaying exchange rates relative to the Ukrainian hryvnia (UAH) in innovative and interactive formats: Table or List, Creeping line, Creeping line 3D, Three-in-One.",
+    "more04": "\uD83C\uDF0D The application supports three languages (Ukrainian, English, and Spanish), enhancing its functionality and making it suitable for an international audience. The interactive interface and visual effects turn the simple task of viewing exchange rates into an engaging experience. ✨",
     "more05": "Welcome! \uD83E\uDD29\uD83D\uDE0E",
     "technologies": "Technologies",
     "name": "Name",

@@ -46,9 +46,9 @@
   "about": {
     "title": "Tipos de cambio del BNU",
     "more01": "Más información...",
-    "more02": "Esta moderna aplicación web está diseñada para proporcionar una visualización cómoda y clara de los tipos de cambio de divisas actuales.",
-    "more03": "La aplicación obtiene datos en tiempo real del API del Banco Nacional de Ucrania, mostrando los tipos de cambio en relación con la grivna ucraniana (UAH) en formatos innovadores e interactivos: Tabla o Lista, Línea progresiva, Línea progresiva 3D, Tres en Uno.",
-    "more04": "La aplicación admite tres idiomas (ucraniano, inglés y español), lo que amplía su funcionalidad y la hace adecuada para una audiencia internacional. La interfaz interactiva y los efectos visuales convierten la simple tarea de consultar tipos de cambio en una experiencia atractiva.",
+    "more02": "\uD83D\uDCB9 Esta moderna aplicación web está diseñada para proporcionar una visualización cómoda y clara de los tipos de cambio de divisas actuales.",
+    "more03": "\uD83D\uDE80 La aplicación obtiene datos en tiempo real del API del Banco Nacional de Ucrania, mostrando los tipos de cambio en relación con la grivna ucraniana (UAH) en formatos innovadores e interactivos: Tabla o Lista, Línea progresiva, Línea progresiva 3D, Tres en Uno.",
+    "more04": "\uD83C\uDF0D La aplicación admite tres idiomas (ucraniano, inglés y español), lo que amplía su funcionalidad y la hace adecuada para una audiencia internacional. La interfaz interactiva y los efectos visuales convierten la simple tarea de consultar tipos de cambio en una experiencia atractiva. ✨",
     "more05": "¡Bienvenido! \uD83E\uDD29\uD83D\uDE0E",
     "technologies": "Tecnologías",
     "name": "Nombre",
