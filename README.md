@@ -6,10 +6,10 @@
 #### 💹 This modern web application is designed to provide a convenient and visual display of current foreign exchange rates. ✨ ####
 
 <ins>The app retrieves real-time data from the National Bank of Ukraine API, displaying exchange rates relative to the Ukrainian hryvnia (UAH) in innovative and interactive formats:</ins> <br>
-1. Table or List 📊 — a concise and user-friendly view of selected currencies.
-2. Creeping line 📜 — a dynamic format that animates the data, with adjustable speed.
-3. Creeping line 3D 🌐 — a unique visualization method developed using Three.js, drawing attention to the movement of currencies.
-4. Three-in-One 🔄 — a combined view that integrates all formats in one place for maximum convenience.
+➔ Table or List 📊 — a concise and user-friendly view of selected currencies.<br>
+➔ Creeping line 📜 — a dynamic format that animates the data, with adjustable speed.<br>
+➔ Creeping line 3D 🌐 — a unique visualization method developed using Three.js, drawing attention to the movement of currencies.<br>
+➔ Three-in-One 🔄 — a combined view that integrates all formats in one place for maximum convenience.
 
 #### 🌍 The application supports three languages (Ukrainian, English, and Spanish), enhancing its functionality and making it suitable for an international audience. 🌐 ####
 
