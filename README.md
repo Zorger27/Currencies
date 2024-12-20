@@ -18,7 +18,8 @@
 ✅ Vue.js + VueX for state management and responsive interface.<br>
 ✅ JavaScript for dynamic interaction.<br>
 ✅ Axios for fast and stable API requests.<br>
-✅ Google Search Console & Analytics for performance optimization, SEO, and analytics.
+✅ Google Search Console & Analytics for performance optimization and analytics.
+✅ Open Graph Protocol, Favicon, Sitemap, Robots.txt — for SEO optimization and social media integration.
 
 #### 🌀 *The interactive interface and visual effects turn the simple task of viewing exchange rates into an engaging experience.* 🌟 ####
 
