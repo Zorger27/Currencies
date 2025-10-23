@@ -21,6 +21,7 @@ import NBURates from "@/components/other/NBURates.vue";
 
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);
+    this.setCanonical(url);
   },
   methods: {
     changeView() {

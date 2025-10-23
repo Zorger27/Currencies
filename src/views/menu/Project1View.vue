@@ -26,6 +26,7 @@ import NBURatesCreep3d from "@/components/other/NBURatesCreep3d.vue";
 
     this.setOpenGraphTags(metaDescription, title, description, imageUrl, url);
     this.setPageTitle(mainTitle);
+    this.setCanonical(url);
   },
   methods: {
     changeView() {
